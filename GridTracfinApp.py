@@ -2,6 +2,15 @@ import os
 import argparse
 import shutil
 
+def install_dev_env():
+    # Python requirements
+    os.system('pip install pipreqs')
+# END def def install_dev_env()
+
+def generate_python_requirements():
+    os.system('pipreqs ' + os.path.join('server', 'app'))
+# END def generate_python_requirements()
+
 def build_app():
     print('Build GridTracfin App and deploy into Docker...')
     output_dir_name = 'output'
@@ -29,6 +38,13 @@ def build_app():
     # Copy the Python Source code
     shutil.copytree(python_dir_src, python_dir_dest, dirs_exist_ok=True)
 
+    # Check if docker is started
+    print('Check if Docker is Started')
+    cmd_result = os.system('docker ps')
+    if cmd_result != 0:
+        print('Docker is Not Running: Stop the task => Start Docker application before running this task.')
+        exit()
+
     print('Stop docker compose')
     os.system('docker-compose -f ' + docker_compose_conf_file + ' down')
 
@@ -38,7 +54,7 @@ def build_app():
     os.system('docker container rm ' + docker_python_container_name)
 
     # Remove existing Python image to rebuild a new one each time (KEEP for the moment but must be refactor in the future)
-    docker_python_image = 'docker-compose-python-server'
+    docker_python_image = 'grid_tracfin_project-python-server'
     print('Remove existing python image: ' + docker_python_image)
     os.system('docker rmi ' + docker_python_image)
 
@@ -46,11 +62,11 @@ def build_app():
     os.system('docker-compose -f ' + docker_compose_conf_file + ' up')
 ### End def build_app()
 
-FUNCTIONS_MAP = { 'build' : build_app }
+FUNCTIONS_MAP = { 'build_and_deploy' : build_app, 'gpr': generate_python_requirements, 'install_dev_env': install_dev_env }
 
 parser = argparse.ArgumentParser(description="Grid Tracfin Builder",
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument("command", choices=FUNCTIONS_MAP.keys())
+parser.add_argument('command', choices=FUNCTIONS_MAP.keys())
 args = parser.parse_args()
 
 ## DEBUG purpose
