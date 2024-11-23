@@ -1,0 +1,7 @@
+<h2>{{(designatedPerson.lastname + ' ' + designatedPerson.firstname) | uppercase}} Details</h2>
+<div>
+  <label for="lastname">Designated Person lastname: </label>
+  <input id="lastname" [(ngModel)]="designatedPerson.lastname" placeholder="lastname">
+  <label for="firstname">Designated Person firstname: </label>
+  <input id="firstname" [(ngModel)]="designatedPerson.firstname" placeholder="lastfirstnamename">
+</div>

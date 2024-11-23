@@ -1,0 +1,45 @@
+Docs/
+output/
+
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/ui/grid-tracfin/dist
+/ui/grid-tracfin/tmp
+/ui/grid-tracfin/out-tsc
+/ui/grid-tracfin/bazel-out
+
+# Node
+/ui/grid-tracfin/node_modules
+/ui/grid-tracfin/npm-debug.log
+/ui/grid-tracfin/yarn-error.log
+
+# IDEs and editors
+/ui/grid-tracfin/.idea/
+/ui/grid-tracfin/.project
+/ui/grid-tracfin/.classpath
+/ui/grid-tracfin/.c9/
+/ui/grid-tracfin/*.launch
+/ui/grid-tracfin/.settings/
+/ui/grid-tracfin/*.sublime-workspace
+
+# Visual Studio Code
+/ui/grid-tracfin/.vscode/*
+/ui/grid-tracfin/!.vscode/settings.json
+/ui/grid-tracfin/!.vscode/tasks.json
+/ui/grid-tracfin/!.vscode/launch.json
+/ui/grid-tracfin/!.vscode/extensions.json
+/ui/grid-tracfin/.history/*
+
+# Miscellaneous
+/ui/grid-tracfin/.angular/cache
+/ui/grid-tracfin/.sass-cache/
+/ui/grid-tracfin/connect.lock
+/ui/grid-tracfin/coverage
+/ui/grid-tracfin/libpeerconnection.log
+/ui/grid-tracfin/testem.log
+/ui/grid-tracfin/typings
+
+# System files
+/ui/grid-tracfin/.DS_Store
+/ui/grid-tracfin/Thumbs.db
