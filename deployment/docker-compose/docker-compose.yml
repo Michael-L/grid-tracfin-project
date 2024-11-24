@@ -24,7 +24,9 @@ services:
   #     - local_network
 
   postgres:
-    image: postgres:1.17@sha256:163763c8afd28cae69035ce84b12d8180179559c747c0701b3cad17818a0dbc5
+    build: 
+      context: .
+      dockerfile: dockerfile/postgres/Dockerfile
     restart: always
     container_name: database
     env_file:
