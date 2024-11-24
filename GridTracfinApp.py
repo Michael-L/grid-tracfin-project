@@ -48,11 +48,6 @@ def prepare_python_part():
     # Copy the Python Source code
     shutil.copytree(python_dir_src, python_dir_dest, dirs_exist_ok=True)
 
-    # Remove existing Python container to rebuild a new one each time (KEEP for the moment but must be refactor in the future)
-    # docker_python_container_name = 'python-server'
-    # print('Remove existing python container: ' + docker_python_container_name)
-    # os.system('docker container rm ' + docker_python_container_name)
-
     # Remove existing Python image to rebuild a new one each time (KEEP for the moment but must be refactor in the future)
     docker_python_image = 'grid_tracfin_project-python-server'
     print('Remove existing python image: ' + docker_python_image)
@@ -66,11 +61,6 @@ def prepare_database_part():
     # Copy the Python Source code
     os.makedirs(database_init_path_dest, exist_ok=True)
     shutil.copytree(database_init_path_src, database_init_path_dest, dirs_exist_ok=True)
-
-    # Remove existing Python container to rebuild a new one each time (KEEP for the moment but must be refactor in the future)
-    # docker_database_container_name = 'database'
-    # print('Remove existing python container: ' + docker_database_container_name)
-    # os.system('docker container rm ' + docker_database_container_name)
 
     # Remove existing Python image to rebuild a new one each time (KEEP for the moment but must be refactor in the future)
     docker_database_image = 'grid_tracfin_project-postgres'
