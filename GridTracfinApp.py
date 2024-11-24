@@ -17,9 +17,12 @@ def build_app():
     docker_output_dir_name = os.path.join(output_dir_name, 'docker_output')
     docker_compose_dir = os.path.join(docker_output_dir_name, 'docker-compose')
     docker_deployment_dir_src = 'deployment'
-    python_dir_src = os.path.join('server', 'app')
-    python_dir_dest = os.path.join(docker_compose_dir, 'dockerfile', 'grid_tracfin_python', 'app')
+    grid_tracfin_python_dir = os.path.join(docker_compose_dir, 'dockerfile', 'grid_tracfin_python')
+    python_dir_src = os.path.join('server', 'app')    
+    python_dir_dest = os.path.join(grid_tracfin_python_dir, 'app')
     docker_compose_conf_file = os.path.join(docker_compose_dir, 'docker-compose.yml')
+    app_config_dir_path_src =  os.path.join('server', 'config')
+    app_config_dir_path_dest =  os.path.join(grid_tracfin_python_dir, 'config')
     
     # Create output directory if not exist
     if not os.path.exists(output_dir_name):
@@ -31,6 +34,9 @@ def build_app():
 
     # Create docker output directory which will contains the image, Dockerfile, source code, we need to build the app and deploy it on Docker
     os.makedirs(docker_output_dir_name, exist_ok=True)
+
+    # Copy config directory to output directory
+    shutil.copytree(app_config_dir_path_src, app_config_dir_path_dest, dirs_exist_ok=True)
 
     # Copy the docker configuration (Image, docker-compose etc)
     shutil.copytree(docker_deployment_dir_src, docker_output_dir_name, dirs_exist_ok=True)
