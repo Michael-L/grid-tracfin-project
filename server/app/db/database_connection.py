@@ -6,6 +6,9 @@ class DatabaseConnection:
     MAX_RETRY = 3
     TIME_RETRY_BETWEEN_RETRY_SEC = 10
 
+    # SECRET_KEY = os.environ.get('SECRET_KEY')
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+
     def __init__(self):
         print('Connect to the PostgreSQL database server')
         self.config = Config()
